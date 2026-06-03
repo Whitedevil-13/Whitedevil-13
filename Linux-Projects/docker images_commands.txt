@@ -1,0 +1,33 @@
+docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
+
+Alternate mobsf is quark 
+
+docker run --rm -it -v D:/Tools/Quark/qark-docker:/app qark(Folder path where quark docker file located same for all) --apk /app/EFFORT-FIRCU-6.0.11C(SslPinningRootDevice).apk(apk name if in same directroy or file path)
+
+
+CMSS SCAN
+
+docker pull opensecurity/cmsscan
+docker run -it -p 7070:7070 opensecurity/cmsscan
+
+
+
+
+node js scan for js scripts
+
+docker pull opensecurity/njsscan
+docker run -v /path-to-source-dir:/src opensecurity/njsscan /src
+
+
+
+
+docker pull opensecurity/nodejsscan:latest
+docker run -it -p 9090:9090 opensecurity/nodejsscan:latest
+
+
+
+docker run -it --rm -p 8000:8000 -e MOBSF_ANALYZER_IDENTIFIER="Q4LF4595DQS8UGBI" -p 1337:1337 -p 1338:1338 opensecurity/mobile-security-framework-mobsf:latest
+
+
+
+docker run -it --rm -p 8000:8000 -e MOBSF_ANALYZER_IDENTIFIER="Q4LF4595DQS8UGBI" -p 1337:1337 -p 1338:1338 -p 5037:5037 -v C:\Users\vn000892\.android:/root/.android -v /tmp/mobsf:/home/mobsf/mobsf-data opensecurity/mobile-security-framework-mobsf:latest
