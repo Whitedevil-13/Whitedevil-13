@@ -1,7 +1,7 @@
 # Welcome
 
-अन्वेषणं ज्ञानस्य मूलम्
-Exploration is the root of knowledge.
+अन्वेषणं ज्ञानस्य मूलम् ||
+Exploration is the root of knowledge. ||
 
 This repository is a personal cybersecurity knowledge base and hobby project where I collect, organize, and document payloads, notes, techniques, and resources related to security research, penetration testing, and learning.
 
