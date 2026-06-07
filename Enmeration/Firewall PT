@@ -1,0 +1,69 @@
+Firewall penetration testing: steps,methods,and Tools.
+
+
+Tools :       Nmap
+	Telnet/Tracert/Traceroute
+	Hping3
+	Firewalk network audting tool.
+
+
+
+1.Locating The Firewall :-
+	Tool:-Hping3
+	checkout system Getway or Proxy
+	ex. Hping3  -T(for traceroute)  -V  -1(for target) www.example.com
+
+
+
+2.Conduction Traceroute
+	for linux tool:- traceroute
+	ex. traceroute www.example.com
+	for windows : tool :tracert
+	ex. tracert www.example.com
+
+
+3.Port Scanning
+	tool:Nmap
+	nmap  -sS  -p 0-1024(port range) <firewallip>  -T4 
+	-sS=SYN flag
+	-sV=Service Version
+	-T4/T1 =speed for scanning
+	both service version and syn flag scan test should be performed by the tester.
+
+4.Banner Grabbing
+	tool:- Nmap = nmap  -sV   --script=banner <firewallip>
+	           nmap = nmap  -Pn -p 80(give open port number )  -sV --script=banner <firewall ip>
+	           curl=curl  -s  -|firewall ip| grep  -e "Server:" or curl   -I <firewall ip:port number>
+	          telnet (firewallip)
+	          nc  -v (firewall ip)
+	          dmitry -b (firewall ip)
+5.Firewall Enumration 
+	tool=nmap:-nmap -sA (firewall ip)  -T3
+		-sA= ACK flag
+		-T3= speed for scanning
+		port - Open state  - listning mode
+		Port - Filter state - blocked by firewall
+		Port - Unfillterd state -passing traffic through the port ,but the port is not open 
+
+6.Testing the Firewall Policy
+               Test method  - Possible values are 
+		Test firewall policy :Source IP/port Destination IP port ,Destination IP /Port and zone that you wish to test 
+		Test web policy 
+		Include other values also 
+		URL 
+		Authenticated user 
+		Time and Day 
+
+7.Firewalking
+	tool:-firewalk
+	ex. firewalk  -d543  -i eth0   -n  -pTCP  <system ip > <target ip>
+	       firewalk  -S (port range)  -i eth0   -n  -p TCP  <system ip > <target ip>
+	-d for destination port
+	-i for interface 
+	-pTCP for tcp protoall
+ 	-n for do not resolve ip into host
+	
+8.Identify Firewall Vulnerablity.
+
+             Disabling service that are not needed and checking firewall configuration is the only the way to ensure safety.
+		https://www.cvedetails.com
